@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temperature Converter</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f0f0f0;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        align-content: center;
+    }
+
+    button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    p {
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<h2>Temperature Converter</h2>
+
+<div>
+    <label for="celsius">Celsius:</label>
+    <input type="number" id="celsius" placeholder="Enter temperature in Celsius">
+    <button onclick="convertToKelvin()">Convert to Kelvin</button>
+    <p id="result"></p>
+</div>
+
+<div>
+    <label for="kelvin">Kelvin:</label>
+    <input type="number" id="kelvin" placeholder="Enter temperature in Kelvin">
+    <button onclick="convertToCelsius()">Convert to Celsius</button>
+    <p id="result2"></p>
+</div>
+
+
+<script>
+function convertToKelvin() {
+  var celsiusTemp = parseFloat(document.getElementById("celsius").value);
+  var kelvinTemp = celsiusTemp + 273.15;
+  document.getElementById("result").innerHTML = celsiusTemp + "°C is " + kelvinTemp.toFixed(2) + "K";
+}
+
+function convertToCelsius() {
+  var kelvinTemp = parseFloat(document.getElementById("kelvin").value);
+  var celsiusTemp = kelvinTemp - 273.15;
+  document.getElementById("result2").innerHTML = kelvinTemp + "K is " + celsiusTemp.toFixed(2) + "°C";
+}
+
+function changeConversationType() {
+    var conversationType = document.getElementById("conversationType").value;
+    if (conversationType === "temperature") {
+        document.getElementById("temperatureConverter").style.display = "block";
+        document.getElementById("otherConversation").style.display = "none";
+    } else if (conversationType === "otherConversation") {
+        document.getElementById("temperatureConverter").style.display = "none";
+        document.getElementById("otherConversation").style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>
